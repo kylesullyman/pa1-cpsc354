@@ -18,17 +18,18 @@ class CalcTransformer(Transformer):
         return ('times', items[0], items[1])
     
     def num(self, items):
-        return float(items[0])
+        return ('num', float(items[0]))
 
 # Function to evaluate the AST
 def evaluate(ast):
-    if isinstance(ast, tuple):
-        if ast[0] == 'plus':
-            return evaluate(ast[1]) + evaluate(ast[2])
-        elif ast[0] == 'times':
-            return evaluate(ast[1]) * evaluate(ast[2])
+    if ast[0] == 'plus':
+        return evaluate(ast[1]) + evaluate(ast[2])
+    elif ast[0] == 'times':
+        return evaluate(ast[1]) * evaluate(ast[2])
+    elif ast[0] == 'num':
+        return ast[1]
     else:
-        return ast
+        raise ValueError(f"Unknown operation: {ast}")
 
 # Main execution
 if __name__ == "__main__":
