@@ -1,0 +1,9 @@
+calculator, 1, 1
+calculator, 1+2+3+4, 10
+calculator, 1+2*3, 7
+calculator, 3*2+1, 7
+calculator, 1+2*3+4*5*6, 127
+calculator, 6*5*4+3*2+1, 127
+calculator, (1+2)*3, 9
+calculator, (1+2*(3+4*(5+6)))*2, 190
+calculator, 2*(((6+5)*4+3)*2+1), 190

@@ -1,0 +1,14 @@
+?start: exp
+
+?exp: exp "+" exp1            -> plus
+   | exp1
+
+?exp1: exp1 "*" exp2          -> times
+    | exp2
+
+?exp2: NUMBER                 -> num
+    | "(" exp ")"                                  
+
+%import common.NUMBER
+%import common.WS
+%ignore WS
