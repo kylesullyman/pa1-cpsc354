@@ -1,7 +1,7 @@
 from lark import Lark, Transformer
 import sys
 
-# Load the grammar from grammarl.lark
+# Load the grammar from grammar.lark
 with open("grammar.lark", "r") as grammar_file:
     grammar = grammar_file.read()
 
