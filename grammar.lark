@@ -1,13 +1,32 @@
+// Precedence ladder: each level binds tighter than the one above it.
+// An operand can only come from the same level or deeper, unless wrapped in ( ).
+
 ?start: exp
 
+// Level 0 (loosest): binary + and -, left-associative (left side recurses)
 ?exp: exp "+" exp1            -> plus
-   | exp1
+    | exp "-" exp1            -> minus
+    | exp1
 
+// Level 1: *, left-associative
 ?exp1: exp1 "*" exp2          -> times
-    | exp2
+     | exp2
 
-?exp2: NUMBER                 -> num
-    | "(" exp ")"                                  
+// Level 2: unary minus, recurses on itself so --1 works
+?exp2: "-" exp2               -> neg
+     | exp3
+
+// Level 3: ^, right-associative (right side recurses)
+// Right operand drops back to exp2 so exponents can be negative, e.g. 2^-1
+?exp3: exp4 "^" exp2          -> pow
+     | exp4
+
+// Level 4 (tightest): atoms
+// log's first operand is fenced in by "log" ... "base", so it can be a full exp.
+// Its base is an atom, so "log 8 base 2 + 1" = (log 8 base 2) + 1.
+?exp4: NUMBER                 -> num
+     | "(" exp ")"
+     | "log" exp "base" exp4  -> log
 
 %import common.NUMBER
 %import common.WS
