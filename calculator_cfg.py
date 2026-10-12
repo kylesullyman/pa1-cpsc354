@@ -1,13 +1,15 @@
+# Kyle Sullivan
+# 2454608
+# Professor Jonathan Weinberger
+# CPSC 354
+
 import math
-import os
 import sys
 
 from lark import Lark, Transformer
 
 # Load the grammar from grammar.lark
-# (resolved relative to this file so the script works from any directory)
-grammar_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "grammar.lark")
-with open(grammar_path, "r") as grammar_file:
+with open("grammar.lark", "r") as grammar_file:
     grammar = grammar_file.read()
 
 # Create a Lark parser from the grammar
@@ -58,8 +60,6 @@ def evaluate(ast):
         raise ValueError(f"Unknown operation: {ast}")
 
 
-# Format the result: print whole numbers without a trailing ".0"
-# (rounding away float noise such as log 1000 base 10 = 2.9999999999999996)
 def format_result(value):
     if isinstance(value, float) and math.isfinite(value):
         rounded = round(value)

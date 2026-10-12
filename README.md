@@ -1,3 +1,8 @@
+Kyle Sullivan  
+2454608  
+Professor Jonathan Weinberger  
+CPSC 354  
+
 # A Calculator with Lark
 
 The grammar in traditional CFG notation is

@@ -1,3 +1,8 @@
+// Kyle Sullivan
+// 2454608 
+// Professor Jonathan Weinberger
+// CPSC 354
+
 // Precedence ladder: each level binds tighter than the one above it.
 // An operand can only come from the same level or deeper, unless wrapped in ( ).
 
